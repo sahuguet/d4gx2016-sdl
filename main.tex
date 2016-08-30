@@ -58,7 +58,7 @@ surveys, for both iOS and Android platforms.
 As mayor of New York City, one of Mike Bloomberg's favorite mottos was ``In God we trust. Everyone else, bring data''.
 
 Data today is being used for so many applications spanning across every industry.
-Medical research is one area where collecting data is usually hard and expensive because of the very personal nature of the data and the need for large enough cohorts. Moreover, the increasing prevalence of chronic diseases \cite{Pollak2011-mq}, \cite{Consolvo2003-xv} has increased the need for capturing data outside of clinical settings.  Because mobile phones have become truly ubiquitous , leveraging them to help collect these data has become the natural thing to do \cite{noauthor_undated-ze}, \cite{noauthor_undated-hv}.  To this end Sage Bionetworks and Apple announced ResearchKit in 2015 to systematize the consent, collection, and sharing of health-relevant data.  We co-developed ResearchStack in 2016 to extend the capability to Android users. The emergence of this common software framework provides a vector for rapid iterative development, deployment, and dissemination of new techniques for data collection and interpretation.  In this paper, we present SDL-Rx, a powerful extension to ResearchKit and ResearchStack that enables study-specific, personalized, visual surveys, for both iOS and Android platforms.
+Medical research is one area where collecting data is usually hard and expensive because of the very personal nature of the data and the need for large enough cohorts. Moreover, the increasing prevalence of chronic diseases \cite{Pollak2011-mq,Consolvo2003-xv} has increased the need for capturing data outside of clinical settings.  Because mobile phones have become truly ubiquitous , leveraging them to help collect these data has become the natural thing to do \cite{noauthor_undated-ze,noauthor_undated-hv}.  To this end Sage Bionetworks and Apple announced ResearchKit in 2015 to systematize the consent, collection, and sharing of health-relevant data.  We co-developed ResearchStack in 2016 to extend the capability to Android users. The emergence of this common software framework provides a vector for rapid iterative development, deployment, and dissemination of new techniques for data collection and interpretation.  In this paper, we present \sdlrx{}, a powerful extension to ResearchKit and ResearchStack that enables study-specific, personalized, visual surveys, for both iOS and Android platforms.
 
 
 \section{Mobile Personal Data Collection Tools }
@@ -77,38 +77,36 @@ Since the launch of ResearchKit, dozens of apps have been designed deployed. The
 Conditions studied include: asthma, cancer (breast, skin), hepatitis C, HIV, pulmonary disease, heart disease (atrial fibrillation), multiple sclerosis, epilepsy, sports injury (concussion, torn ligaments), arthritis, microbiome,,, nutrition, autism, depression, and Alzheimer's.
 
 
-
-
 \section{Visual Self-Report}
-Restricting data collection to text-based multiple choice questions is a barrier both in terms of users (reading small fonts and typing on a phone can be challenging for certain populations, not to mention literacy concerns) and in terms of the data being collected (a picture is worth a thousand words). And the high quality displays and touch screens  available on today’s smartphones provides a ubiquitous opportunity to move beyond text.
+Restricting data collection to text-based multiple choice questions is a barrier both in terms of users (reading small fonts and typing on a phone can be challenging for certain populations, not to mention literacy concerns) and in terms of the data being collected (a picture is worth a thousand words). And the high quality displays and touch screens  available on today's smartphones provides a ubiquitous opportunity to move beyond text.
 
 An alternative is visual reporting pioneered by the Cornell Information Sciences \cite{Aung2016-rx} and Small Data Lab \cite{Yang2016-dn}, \cite{noauthor_2015-gf} , where personalized images are used to improve survey efficiency.
 As pointed in \cite{Yang2016-dn}, ``asking generic sets of questions repeatedly introduces user burden and fatigue that threatens to interfere with their utility''. And using images ``offers several potential benefits: both broader and more specific coverage of activities of daily living, improved engagement, and accurate capture of individual health situations''.
 
-Another interesting aspect of visual surveys is that they can be implemented as a two step process where users start by selecting from a large pool of items (e.g. once a month) and only need to interact with the selected ones on a daily basis. This can apply to penible activities, medications taken, etc. Figure~\ref{fig::visual-apps} features YADL (for daily activity reporting) and PAM (for mood reporting).{}
-
 \begin{figure}[h!]
 \centering
-\label{fig::visual-apps}
 \includegraphics[width=8cm]{IMG/visual-apps.png}
 \caption{two examples of visual reporting apps.}
+\label{fig::visual-apps}
 \end{figure}
+
+Another interesting aspect of visual surveys is that they can be implemented as a two step process where users start by selecting from a large pool of items (e.g. once a month) and only need to interact with the selected ones on a daily basis. This can apply to penible activities, medications taken, etc. Figure~\ref{fig::visual-apps} features YADL (for daily activity reporting) and PAM (for mood reporting).
 
 Both PAM and YADL were implemented as standalone applications for both iOS and Android platform, without much code reuse. They both required some programming expertise and a non-negligible software engineering budget.
 
 \section{\sdlrx}
-SDL-Rx is a powerful software library designed for ResearchKit that enables study-specific, personalized, and rich visual surveys, for both iOS and Android platforms. Researchers can easily incorporate visual self-report mechanisms into mobile apps built with ResearchKit and ResearchStack. We want to emphasize the fact that we are trying to lower the barrier of entry for building such apps, both in terms of expertise and cost.
+\sdlrx{} is a powerful software library designed for ResearchKit that enables study-specific, personalized, and rich visual surveys, for both iOS and Android platforms. Researchers can easily incorporate visual self-report mechanisms into mobile apps built with ResearchKit and ResearchStack. We want to emphasize the fact that we are trying to lower the barrier of entry for building such apps, both in terms of expertise and cost.
 
-Rather than reinventing the wheel and creating more fragmentation (see \cite{noauthor_undated-ej}), the goal for SDL-Rx was to build on top of ResearchKit/Stack, to enrich existing application with more intuitive way of collecting user data. Therefore, our guiding principles leant towards an architecture that is (a) modular, (b) opinionated and (c) that favors compatibility over creativity.
+Rather than reinventing the wheel and creating more fragmentation (see \cite{noauthor_undated-ej}), the goal for \sdlrx{} was to build on top of ResearchKit/Stack, to enrich existing application with more intuitive way of collecting user data. Therefore, our guiding principles leant towards an architecture that is (a) modular, (b) opinionated and (c) that favors compatibility over creativity.
 
 \begin{figure}[h!]
 \centering
-\label{fig::architecture}
 \includegraphics[width=8cm]{IMG/architecture.png}
 \caption{architecture diagram.}
+\label{fig::architecture}
 \end{figure}
 
-Using SDL-Rx, an application is defined by a JSON file that defines the structure of the app and references some media assets to be used. The JSON file for the YADL example from Figure~\ref{fig::visual-apps} is presented in Figure~\ref{fig::json}.
+Using \sdlrx{}, an application is defined by a JSON file that defines the structure of the app and references some media assets to be used. The JSON file for the YADL example from Figure~\ref{fig::visual-apps} is presented in Figure~\ref{fig::json}.
 
 \lstset{
 basicstyle=\small\ttfamily,
@@ -116,8 +114,7 @@ columns=flexible,
 breaklines=true
 postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
 }
-\begin{figure*}
-\label{fig::json}
+\begin{figure*}[h!]
 \begin{Verbatim}[fontsize=\small,frame=single]
 {
    "YADL":{
@@ -197,10 +194,11 @@ postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}
 }
 \end{Verbatim}
 \caption{JSON configuration file for the YADL application.}
+\label{fig::json}
 \end{figure*}
 
 
-SDL-Rx is totally storage-agnostic. Sending the data to the cloud and storing it is out of the scope of the framework. Existing solutions such as Sage Bionetworks Bridge server \cite{noauthor_undated-ax} or Small Data Lab Ohmage server \cite{Software_undated-mu} can be used easily as back-ends.
+\sdlrx{} is totally storage-agnostic. Sending the data to the cloud and storing it is out of the scope of the framework. Existing solutions such as Sage Bionetworks Bridge server \cite{noauthor_undated-ax} or Small Data Lab Ohmage server \cite{Software_undated-mu} can be used easily as back-ends.
 
 \section{Examples of app (soon to be built)}
 We provide three use cases currently in development that demonstrate the broad applicability and customizability of the approach:
@@ -214,20 +212,20 @@ Dr. Vijay Vad of Hospital for Special Surgery  is using the Visual self Report t
 
 
 \section{Future Work}
-Our first priority is to have researchers use our framework to build and deploy personal data collection applications. With SDL-Rx, we tried to lower the bar (both in terms of cost and expertise). But there is still a lot to do. The end goal is to build such apps as easily as creating a survey on platforms such as Google Forms, Qualtrics or Survey Monkey.
+Our first priority is to have researchers use our framework to build and deploy personal data collection applications. With \sdlrx{}, we tried to lower the bar (both in terms of cost and expertise). But there is still a lot to do. The end goal is to build such apps as easily as creating a survey on platforms such as Google Forms, Qualtrics or Survey Monkey.
 
 We want to provide ready-to-use ResearchKit and ResearchStack-compatible components to capture more data. This implies leveraging and integrating with location, phone movement, phone interaction, image capture, etc. Some interesting apps have already been built but not out of reusable components.
 
 We want to improve the orchestration of such surveys. It is important to ask the right question the right way. It is even more important to ask the question at the right time. By orchestration, we include schedule (when), frequency (how often) and reminders (e.g. ability to snooze a survey). All of these features should be simple parameters a researcher can tweak for a given research study.
 
-We are actively involved in the development of new digital biomarkers based on active and passive  sensor data collection to reduce dependence on self report. Progress is critically dependent on improved self-report such as SDL-Rx to provide labeled data sets.
+We are actively involved in the development of new digital biomarkers based on active and passive  sensor data collection to reduce dependence on self report. Progress is critically dependent on improved self-report such as \sdlrx{} to provide labeled data sets.
 
 We also want to explore and encourage similar data collection apps beyond purely medical research studies. Quality-of-life issues including pollution (noise, air) and happiness in cities would be a good first start.
 
 \section{Conclusion}
-Mobile phones have become one of our most personal properties. It makes sense to leverage them to let users capture their personal data for research studies. Apple and Sage Bionetwork's ResearchKit made a big contribution by creating a platform to build such personal data collection app, using traditional survey forms. With SDL-Rx, we enrich the ecosystem with ready-to-use components to incorporate visual surveys into ResearchKit and ResearchStack for iOS and Android platforms, respectively.
+Mobile phones have become one of our most personal properties. It makes sense to leverage them to let users capture their personal data for research studies. Apple and Sage Bionetwork's ResearchKit made a big contribution by creating a platform to build such personal data collection app, using traditional survey forms. With \sdlrx{}, we enrich the ecosystem with ready-to-use components to incorporate visual surveys into ResearchKit and ResearchStack for iOS and Android platforms, respectively.
 
-We have been using SDL-Rx internally at Cornell Tech for various projects. We encourage the community to use it and provide comments. The Small Data Lab ResearchKit Extensions (sdl-rkx) and Small Data Lab ResearchStack Extensions (sdl-rsx) packages, available immediately as open source projects under the Apache 2.0 license on the Cornell Tech public github repository.
+We have been using \sdlrx{} internally at Cornell Tech for various projects. We encourage the community to use it and provide comments. The Small Data Lab ResearchKit Extensions (sdl-rkx) and Small Data Lab ResearchStack Extensions (sdl-rsx) packages, available immediately as open source projects under the Apache 2.0 license on the Cornell Tech public github repository.
 
 A demo app that leverages the extension is included in each repository:
 \begin{itemize}[noitemsep, topsep=-5pt]
